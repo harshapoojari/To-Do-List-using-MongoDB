@@ -1,0 +1,36 @@
+<%- include("header") -%>
+<body>
+<!-- <% if(ListOfTitles==="Sunday "||ListOfTitles==="Saturday"){ %>
+      <h1>Today is <%= ListOfTitles %>!and it's a Holiday!</h1>
+      <% }else{ %>
+      <h1>Today is <%= ListOfTitles %>! and working day</h1>    
+      <% } %> -->
+      <div class="box" id="heading">
+        <h1> <%= ListOfTitles %></h1>
+      </div>
+      
+<div class="box">
+   
+        
+        <% Allitem.forEach((item)=>{%>
+          
+       <form action="/delete" method="post">
+        <div class="item">
+          <input name="checkbox" type="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+           <p><%= item.name %></p>
+           <input type="hidden" name="listTitle" value="<%= ListOfTitles %>"></input>
+         </div>
+       </form>
+          
+        <%  }) %>
+      
+          <div class="item">
+            <form class="item" action="/" method="POST">
+              <input type="text" name="newitem" id="" placeholder="New Item" autocomplete="off">
+             <button type="submit" name="list" value=<%= ListOfTitles %>>+</button>
+            </form>
+          </div>
+             
+  </div>
+</body>
+ <%- include("footer") -%>
